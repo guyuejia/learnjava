@@ -7,6 +7,8 @@ import java.io.IOException;
 /**
  * @author hushishuai
  * @date 2019/11/13
+ * 利用runtime机制，调用python脚本。只要python脚本本身可以在当前环境正确执行，那java就能调用
+ * 本demo展示了无需给脚本传参数的用法
  */
 public class RuntimeDemo1 {
     public static void main(String[] args) {
