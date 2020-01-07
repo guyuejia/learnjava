@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class PropertyUtil {
     static Logger logger =Logger.getLogger("Client");
     //第一种方法，直接采用文件流的方法读取配置文件的路径
-    public static String getProperties1(String name){
+    public static String getPropertiesByPath(String name){
         logger.info("执行开始");
         Properties properties = new Properties();
         //使用文件流读取，执行main方法和中间件加载执行正常
@@ -24,13 +24,13 @@ public class PropertyUtil {
         logger.info("执行结束"+properties.getProperty(name));
         return properties.getProperty(name);
     }
-    //第二种方法，直接采用文件流的方法读取配置文件的路径
-    public static String getProperties2(String name){
+    //第二种方法推荐，直接从classpath读取配置文件
+    public static String getPropertiesByClasspath(String name){
         logger.info("执行开始");
         Properties properties = new Properties();
-        String propFileName = "src/resource/config.properties";
-        //使用类加载器读取文件，执行main方法报空指针，但是中间件加载执行正常
-        InputStream in = PropertyUtil.class.getResourceAsStream(propFileName);
+        String propFileName = "config.properties";
+        //使用类加载器读取文件，前提是要把配置文件所在目录设置为resource类型
+        InputStream in = PropertyUtil.class.getClassLoader().getResourceAsStream(propFileName);
         try {
             properties.load(in);
         } catch (IOException e) {
@@ -40,7 +40,7 @@ public class PropertyUtil {
         return properties.getProperty(name);
     }
     public static void main(String[] args) {
-        System.out.println(getProperties2("name"));
+        System.out.println(getPropertiesByClasspath("name"));
     }
 
 }
