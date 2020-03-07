@@ -1,4 +1,4 @@
-package bitwise;
+package algorithm.bitwise;
 
 /**
  * @author hushishuai
