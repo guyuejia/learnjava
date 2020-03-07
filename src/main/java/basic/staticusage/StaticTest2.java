@@ -24,13 +24,13 @@ package basic.staticusage;
  * 版权声明：本文为CSDN博主「Cappuccinooo」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
  * 原文链接：https://blog.csdn.net/kuangay/article/details/81485324
  */
-public class Test {
+public class StaticTest2 {
     Person person = new Person("Test");
     static{
         System.out.println("test static");
     }
 
-    public Test() {
+    public StaticTest2() {
         System.out.println("test constructor");
     }
 
@@ -49,7 +49,7 @@ class Person{
 }
 
 
-class MyClass extends Test {
+class MyClass extends StaticTest2 {
     Person person = new Person("MyClass");
     static{
         System.out.println("myclass static");
