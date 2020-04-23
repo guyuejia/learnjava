@@ -24,6 +24,7 @@ public class PropertyUtil {
         logger.info("执行结束"+properties.getProperty(name));
         return properties.getProperty(name);
     }
+
     //第二种方法推荐，直接从classpath读取配置文件,该配置文件需要放在resource目录下
     public static String getPropertiesByClasspath(String name){
         logger.info("执行开始");
